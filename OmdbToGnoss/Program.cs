@@ -21,11 +21,13 @@ namespace OmdbToGnoss
             _omdbApiKey = Console.ReadLine();
 
             List<Movie> someMovies = DownloadSomeFilms();
-            //List<TVSeries> someSeries = DownloadSomeSeries();
 
             // Upload to GNOSS
-            //GnossApiService gnossApiService = new GnossApiService(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "config", "config.xml"));
-            //gnossApiService.UploadFilms(someMovies);
+            GnossApiService gnossApiService = new GnossApiService(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "config", "config.xml"));
+            gnossApiService.UploadFilms(someMovies);
+
+            List<TVSeries> someSeries = DownloadSomeSeries();
+            gnossApiService.UploadTvSeries(someSeries);
         }
 
         
