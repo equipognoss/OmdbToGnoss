@@ -62,45 +62,7 @@ namespace OmdbToGnoss.Services
 
         public void UploadTvSeries(List<TVSeries> someSeries)
         {
-            // Prefijos de ontología
-            List<string> prefixes = new List<string>() {
-                 Constants.Prefixes.Schema
-            };
-
-            foreach (TVSeries serie in someSeries)
-            {
-                ComplexOntologyResource resource = new ComplexOntologyResource();
-
-                List<OntologyProperty> properties = GetTVSeriesProperties(serie);
-                List<OntologyEntity> relatedEntitiesList = GetTvSeriesRelatedEntities(serie);
-
-                byte[] imageBytes = GetCreativeWorkImage(serie);
-
-                Ontology ont = new Ontology(_resourceAPI.GraphsUrl, _resourceAPI.OntologyUrl, Constants.Classes.TVSeries, Constants.Classes.TVSeries, prefixes, properties, relatedEntitiesList);
-
-                resource.Ontology = ont;
-
-                resource.CreationDate = DateTime.Now;
-                resource.Visibility = ResourceVisibility.open;
-
-                if (imageBytes != null)
-                {
-                    List<ImageAction> actions = new List<ImageAction>();
-                    actions.Add(new ImageAction(234, Gnoss.ApiWrapper.Helpers.ImageTransformationType.Crop, 100));
-                    actions.Add(new ImageAction(660, Gnoss.ApiWrapper.Helpers.ImageTransformationType.ResizeToHeight, 100));
-
-                    resource.AttachImage(imageBytes, actions, Constants.Properties.Image, true, ImageService.GetImageExtensionFromURL(serie.Poster));
-                }
-
-                try
-                {
-                    _resourceAPI.LoadComplexSemanticResource(resource);
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                }
-            }
+            // TODO
         }
 
         public byte[] GetCreativeWorkImage(CreativeWork creativeWork)
@@ -179,59 +141,7 @@ namespace OmdbToGnoss.Services
             return properties;
         }
 
-        public List<OntologyEntity> GetTvSeriesRelatedEntities(TVSeries tvSerie)
-        {
-            List<OntologyEntity> relatedEntitiesList = new List<OntologyEntity>();
-            
-
-            if (tvSerie.Seasons != null && tvSerie.Seasons.Count > 0)
-            {
-                foreach (TVSeriesSeason season in tvSerie.Seasons)
-                {
-                    List<OntologyProperty> properties = new List<OntologyProperty>();
-                    List<OntologyEntity> episodes = new List<OntologyEntity>();
-
-                    properties.Add(new StringOntologyProperty(Constants.Properties.SeasonNumber, season.Season.ToString()));
-
-                    if (!string.IsNullOrEmpty(season.Title))
-                    {
-                        properties.Add(new StringOntologyProperty(Constants.Properties.Name, season.Title));
-                    }
-
-                    if (season.Episodes != null && season.Episodes.Count > 0)
-                    {
-                        foreach (TVSeriesEpisode episode in season.Episodes)
-                        {
-                            episodes.Add(GetEpisode(episode));
-                        }
-                    }
-
-                    OntologyEntity seasonEntity = new OntologyEntity(Constants.Classes.CreativeWorkSeason, Constants.Classes.CreativeWorkSeason, Constants.Properties.ContainsSeason, properties, episodes);
-                    relatedEntitiesList.Add(seasonEntity);
-                }
-            }
-
-            return relatedEntitiesList;
-        }
-
-        private OntologyEntity GetEpisode(TVSeriesEpisode episode)
-        {
-            List<OntologyProperty> properties = GetCreativeWorkProperties(episode);
-
-            properties.Add(new StringOntologyProperty(Constants.Properties.EpisodeNumber, episode.Episode.ToString()));
-
-            OntologyEntity episodeEntity = new OntologyEntity(Constants.Classes.Episode, Constants.Classes.Episode, Constants.Properties.Episode, properties);
-            return episodeEntity;
-        }
-
-        public List<OntologyProperty> GetTVSeriesProperties(TVSeries tvSerie)
-        {
-            List<OntologyProperty> properties = GetCreativeWorkProperties(tvSerie);
-
-            properties.Add(new StringOntologyProperty(Constants.Properties.ProductionCompany, tvSerie.totalSeasons.ToString()));
-
-            return properties;
-        }
+        
 
         public List<OntologyProperty> GetMovieProperties(Movie movie)
         {
