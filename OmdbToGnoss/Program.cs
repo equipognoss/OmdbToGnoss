@@ -1,13 +1,14 @@
-﻿using CsvHelper;
-using CsvHelper.Configuration;
-using Gnoss.ApiWrapper.Model;
+﻿
+using OmdbToGnoss.Controller;
 using OmdbToGnoss.Model;
 using OmdbToGnoss.Services;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace OmdbToGnoss
@@ -17,73 +18,33 @@ namespace OmdbToGnoss
         private static string _omdbApiKey;
         static void Main(string[] args)
         {
-            Console.WriteLine("Insert your OMDB Api Key...");
-            _omdbApiKey = Console.ReadLine();
+            //Console.WriteLine("Insert your OMDB Api Key...");
+            //_omdbApiKey = Console.ReadLine();
 
-            List<Movie> someMovies = DownloadSomeFilms();
-
-            // Upload to GNOSS
             GnossApiService gnossApiService = new GnossApiService(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "config", "config.xml"));
-            gnossApiService.UploadFilms(someMovies);
+            gnossApiService.EliminarRecursosCargados();
 
-            List<TVSeries> someSeries = DownloadSomeSeries();
-            gnossApiService.UploadTvSeries(someSeries);
-        }
+            OmdbToGnossController omdbToGnossController = new OmdbToGnossController(_omdbApiKey);
 
-        
+            // Get some movies from OMDB API
+            List<Movie> someMovies = omdbToGnossController.DownloadSomeMovies();
 
-        private static List<Movie> DownloadSomeFilms()
-        {
-            List<Movie> movies = new List<Movie>();
-            OmdbService omdbService = new OmdbService(_omdbApiKey);
+            // Get all people (actors, directors, writers...) from all these films
+            List<string> people = omdbToGnossController.GetPeopleFromMovies(someMovies.ToList());
 
-            CsvReader csvReader = new CsvReader(new StreamReader(@"..\..\Data\imdb_films_2000-2018_7.tsv"), new Configuration() { Delimiter = "\t", HasHeaderRecord = true, BadDataFound = null, IgnoreQuotes = true });
-            int num = 0;
+            // Get all people (actors, directors, writers...) from all these films
+            List<string> genres = omdbToGnossController.GetGenresFromMovies(someMovies.ToList());
 
-            while (csvReader.Read())
-            {
-                try
-                {
-                    var record = csvReader.GetRecord<ImdbTitleBasics>();
+            // Upload people
+            gnossApiService.UploadPeople(people);
 
-                    movies.Add(omdbService.DownloadMovie(record.tconst));
-                    Console.WriteLine($"{++num} Downloaded: {record.originalTitle}");
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    throw;
-                }
-            }
+            gnossApiService.UploadGenres(genres);
 
-            return movies;
-        }
+            // Upload movies
+            gnossApiService.UploadMovies(someMovies.ToList());
 
-        private static List<TVSeries> DownloadSomeSeries()
-        {
-            List<TVSeries> series = new List<TVSeries>();
-            OmdbService omdbService = new OmdbService(_omdbApiKey);
-
-            int num = 0;
-            CsvReader csvReader = new CsvReader(new StreamReader(@"..\..\Data\imdb_series_2010-2018_8-10000.tsv"), new Configuration() { Delimiter = "\t", HasHeaderRecord = true, BadDataFound = null, IgnoreQuotes = true });
-
-            while (csvReader.Read())
-            {
-                try
-                {
-                    var record = csvReader.GetRecord<ImdbTitleBasics>();
-
-                    series.Add(omdbService.DownloadTVSerie(record.tconst));
-                    Console.WriteLine($"{++num} Downloaded: {record.originalTitle}");
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    throw;
-                }
-            }
-
-            return series;
+            Console.WriteLine("Terminado. Pulsa cualquier tecla para continuar");
+            Console.ReadKey();
         }
     }
 }

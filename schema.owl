@@ -7,13 +7,11 @@
     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
   xml:base="http://www.owl-ontologies.com/unnamed.owl">
   <owl:Ontology rdf:about="http://schema.org/"/>
+  <owl:Class rdf:about="http://schema.org/CreativeWork"/>
   <owl:Class rdf:about="http://schema.org/Episode">
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="http://schema.org/CreativeWork"/>
-    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="http://schema.org/CreativeWork"/>
   </owl:Class>
-  <owl:Class rdf:about="http://schema.org/Person"/>
-  <owl:Class rdf:about="http://schema.org/Genre"/>
+  <owl:Class rdf:about="http://schema.org/Rating"/>
   <owl:Class rdf:about="http://schema.org/Movie">
     <rdfs:subClassOf rdf:resource="http://schema.org/CreativeWork"/>
   </owl:Class>
@@ -23,6 +21,10 @@
   <owl:Class rdf:about="http://schema.org/TVSeries">
     <rdfs:subClassOf rdf:resource="http://schema.org/CreativeWork"/>
   </owl:Class>
+  <owl:ObjectProperty rdf:about="http://schema.org/rating">
+    <rdfs:range rdf:resource="http://schema.org/Rating"/>
+    <rdfs:domain rdf:resource="http://schema.org/CreativeWork"/>
+  </owl:ObjectProperty>
   <owl:ObjectProperty rdf:about="http://schema.org/director">
     <rdfs:domain>
       <owl:Class>
@@ -33,7 +35,6 @@
         </owl:unionOf>
       </owl:Class>
     </rdfs:domain>
-    <rdfs:range rdf:resource="http://schema.org/Person"/>
   </owl:ObjectProperty>
   <owl:ObjectProperty rdf:about="http://schema.org/actor">
     <rdfs:domain>
@@ -45,14 +46,15 @@
         </owl:unionOf>
       </owl:Class>
     </rdfs:domain>
-    <rdfs:range rdf:resource="http://schema.org/Person"/>
   </owl:ObjectProperty>
   <owl:ObjectProperty rdf:about="http://schema.org/author">
-    <rdfs:range rdf:resource="http://schema.org/Person"/>
     <rdfs:domain rdf:resource="http://schema.org/CreativeWork"/>
   </owl:ObjectProperty>
   <owl:ObjectProperty rdf:about="http://schema.org/episode">
     <rdfs:domain rdf:resource="http://schema.org/CreativeWorkSeason"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://schema.org/genre">
+    <rdfs:domain rdf:resource="http://schema.org/CreativeWork"/>
   </owl:ObjectProperty>
   <owl:ObjectProperty rdf:about="http://schema.org/containsSeason">
     <rdfs:domain rdf:resource="http://schema.org/TVSeries"/>
@@ -65,30 +67,8 @@
     <rdfs:domain rdf:resource="http://schema.org/CreativeWork"/>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
   </owl:DatatypeProperty>
-  <owl:DatatypeProperty rdf:about="http://schema.org/aggregateRating">
+  <owl:DatatypeProperty rdf:about="http://schema.org/countryOfOrigin">
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    <rdfs:domain rdf:resource="http://schema.org/CreativeWork"/>
-  </owl:DatatypeProperty>
-  <owl:DatatypeProperty rdf:about="http://schema.org/award">
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    <rdfs:domain rdf:resource="http://schema.org/CreativeWork"/>
-  </owl:DatatypeProperty>
-  <owl:DatatypeProperty rdf:about="http://schema.org/productionCompany">
-    <rdfs:domain rdf:resource="http://schema.org/Movie"/>
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-  </owl:DatatypeProperty>
-  <owl:FunctionalProperty rdf:about="http://schema.org/description">
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    <rdfs:domain rdf:resource="http://schema.org/CreativeWork"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
-  </owl:FunctionalProperty>
-  <owl:FunctionalProperty rdf:about="http://schema.org/episodeNumber">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
-    <rdfs:domain rdf:resource="http://schema.org/Episode"/>
-  </owl:FunctionalProperty>
-  <owl:FunctionalProperty rdf:about="http://schema.org/contryOfOrigin">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
     <rdfs:domain>
       <owl:Class>
         <owl:unionOf rdf:parseType="Collection">
@@ -97,28 +77,15 @@
         </owl:unionOf>
       </owl:Class>
     </rdfs:domain>
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-  </owl:FunctionalProperty>
-  <owl:FunctionalProperty rdf:about="http://schema.org/name">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    <rdfs:domain>
-      <owl:Class>
-        <owl:unionOf rdf:parseType="Collection">
-          <owl:Class rdf:about="http://schema.org/CreativeWork"/>
-          <owl:Class rdf:about="http://schema.org/Person"/>
-          <owl:Class rdf:about="http://schema.org/Genre"/>
-        </owl:unionOf>
-      </owl:Class>
-    </rdfs:domain>
-  </owl:FunctionalProperty>
-  <owl:FunctionalProperty rdf:about="http://schema.org/recordedAt">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://schema.org/recordedAt">
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
     <rdfs:domain rdf:resource="http://schema.org/CreativeWork"/>
-  </owl:FunctionalProperty>
-  <owl:FunctionalProperty rdf:about="http://schema.org/duration">
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://schema.org/aggregateRating">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://schema.org/duration">
     <rdfs:domain>
       <owl:Class>
         <owl:unionOf rdf:parseType="Collection">
@@ -127,37 +94,72 @@
         </owl:unionOf>
       </owl:Class>
     </rdfs:domain>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://schema.org/award">
+    <rdfs:domain rdf:resource="http://schema.org/CreativeWork"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://schema.org/productionCompany">
+    <rdfs:domain rdf:resource="http://schema.org/Movie"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:FunctionalProperty rdf:about="http://schema.org/description">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:domain rdf:resource="http://schema.org/CreativeWork"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="http://schema.org/episodeNumber">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain rdf:resource="http://schema.org/Episode"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="http://schema.org/name">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:domain rdf:resource="http://schema.org/CreativeWork"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
   </owl:FunctionalProperty>
   <owl:FunctionalProperty rdf:about="http://schema.org/datePublished">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
     <rdfs:domain rdf:resource="http://schema.org/CreativeWork"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
   </owl:FunctionalProperty>
   <owl:FunctionalProperty rdf:about="http://schema.org/image">
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
     <rdfs:domain rdf:resource="http://schema.org/CreativeWork"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
   </owl:FunctionalProperty>
-  <owl:FunctionalProperty rdf:about="http://schema.org/contentRating">
+  <owl:FunctionalProperty rdf:about="http://schema.org/ratingValue">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
-    <rdfs:domain rdf:resource="http://schema.org/CreativeWork"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="http://schema.org/Rating"/>
+          <owl:Class rdf:about="http://schema.org/Movie"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="http://schema.org/ratingSource">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:domain rdf:resource="http://schema.org/Rating"/>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
   </owl:FunctionalProperty>
-  <owl:FunctionalProperty rdf:about="http://schema.org/numberOfSeasons">
+  <owl:FunctionalProperty rdf:about="http://schema.org/contentRating">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
-    <rdfs:domain rdf:resource="http://schema.org/TVSeries"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="http://schema.org/CreativeWork"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="http://schema.org/numberOfSeasons">
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain rdf:resource="http://schema.org/TVSeries"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
   </owl:FunctionalProperty>
   <owl:FunctionalProperty rdf:about="http://schema.org/seasonNumber">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
     <rdfs:domain rdf:resource="http://schema.org/CreativeWorkSeason"/>
-  </owl:FunctionalProperty>
-  <owl:FunctionalProperty rdf:about="http://schema.org/genre">
-    <rdfs:domain rdf:resource="http://schema.org/CreativeWork"/>
-    <rdfs:range rdf:resource="http://schema.org/Genre"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
   </owl:FunctionalProperty>
 </rdf:RDF>
 

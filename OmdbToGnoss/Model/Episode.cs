@@ -11,5 +11,6 @@ namespace OmdbToGnoss.Model
         public int Season { get; set; }
         public int Episode { get; set; }
         public string seriesID { get; set; }
+        public string imdbID { get; set; }
     }
 }

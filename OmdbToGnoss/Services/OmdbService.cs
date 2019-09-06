@@ -13,8 +13,7 @@ namespace OmdbToGnoss.Services
     public class OmdbService
     {
         private string _apiKey;
-        private const string URL_OMDB_API = "http://www.omdbapi.com/";
-
+        
         public OmdbService(string apiKey)
         {
             _apiKey = apiKey;
@@ -31,7 +30,7 @@ namespace OmdbToGnoss.Services
             else
             {
                 WebClient clientWeb = new WebClient();
-                string url = $"{URL_OMDB_API}?apikey={_apiKey}&i={omdb_object_id}";
+                string url = $"{Constants.Services.URL_OMDB_API}?apikey={_apiKey}&i={omdb_object_id}";
                 if (!string.IsNullOrEmpty(parameters))
                 {
                     url += $"&{parameters.Trim('&')}";
@@ -64,7 +63,7 @@ namespace OmdbToGnoss.Services
                 string parameters = $"Season={i}";
                 TVSeriesSeason season = JsonConvert.DeserializeObject<TVSeriesSeason>(DownloadContentFromOmdbAPI(serieId, parameters));
 
-                // The information of each episode is not complete, it's going to download the complete episodes information
+                // The information of each episode is not complete. We need to download the complete episodes information
                 DownloadTVSerieSeasonEpisodes(season);
 
                 serie.Seasons.Add(season);

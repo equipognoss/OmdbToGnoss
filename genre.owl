@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns="http://schema.org/"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+  xml:base="http://schema.org/">
+  <owl:Ontology rdf:about=""/>
+  <owl:Class rdf:about="http://schema.org/Genre"/>
+  <owl:DatatypeProperty rdf:about="http://schema.org/name">
+    <rdfs:domain rdf:resource="http://schema.org/Genre"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+</rdf:RDF>
+
+<!-- Created with Protege (with OWL Plugin 3.3.1, Build 430)  http://protege.stanford.edu -->

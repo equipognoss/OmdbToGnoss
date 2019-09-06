@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" standalone="yes"?>
+<config>
+  <apiEndpoint></apiEndpoint>
+  <communityShortName>omdb</communityShortName>
+  <developerEmail>test@gnos.com</developerEmail>
+  <ontologyName>schema</ontologyName>
+  <consumer>
+    <consumerKey></consumerKey>
+    <consumerSecret></consumerSecret>
+  </consumer>
+  <token>
+    <tokenKey></tokenKey>
+    <tokenSecret></tokenSecret>
+  </token>
+  <log>
+    <logPath>C:\Cargas\Log</logPath>
+    <logFileName>OMDB.log</logFileName>
+    <logLevel>TRACE</logLevel>
+  </log>
+</config>
