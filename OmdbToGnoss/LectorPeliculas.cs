@@ -406,6 +406,10 @@ namespace OMDbToGnoss
 
         private void EscribirCSV(List<CSVEntry> listPersonasGuids, List<CSVEntry> listPeliculasGuids)
         {
+            if(!Directory.Exists(Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Data"))))
+            {
+                Directory.CreateDirectory(Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Data")));
+            }
             using (var writer = new StreamWriter(Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Data", "Personas.csv")), true))
             using (var csvWriter = new CsvWriter(writer, CultureInfo.InvariantCulture))
             {
@@ -414,6 +418,10 @@ namespace OMDbToGnoss
                 csvWriter.WriteRecords(listPersonasGuids);
             }
 
+            if (!Directory.Exists(Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Data"))))
+            {
+                Directory.CreateDirectory(Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Data")));
+            }
             using (var writer2 = new StreamWriter(Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Data", "Peliculas.csv")), true))
             using (var csvWriter2 = new CsvWriter(writer2, CultureInfo.InvariantCulture))
             {
