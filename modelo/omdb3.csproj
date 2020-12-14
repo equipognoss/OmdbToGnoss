@@ -32,8 +32,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Gnoss.ApiWrapper, Version=4.1.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\OMDbToGnoss\OMDbToGnoss\packages\GnossApiWrapper.6.0.6\lib\net461\Gnoss.ApiWrapper.dll</HintPath>
-      <Private>True</Private>
+      <HintPath>..\packages\GnossApiWrapper.6.0.6\lib\net461\Gnoss.ApiWrapper.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.AI.Agent.Intercept, Version=2.0.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.2.0.7\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
