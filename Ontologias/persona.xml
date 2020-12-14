@@ -1,0 +1,247 @@
+﻿<config>
+	<ConfiguracionGeneral>
+		<namespace>persona</namespace>
+		<idiomasOnto>
+			<idiomaOnto>es</idiomaOnto>
+		</idiomasOnto>
+		<ocultarTituloDescpImgDoc/>
+		<TituloDoc EntidadID="http://schema.org/Person">http://schema.org/name</TituloDoc>
+		<DescripcionDoc EntidadID="http://schema.org/Person">http://schema.org/name</DescripcionDoc>
+		<ImagenDoc EntidadID="http://schema.org/Person">http://schema.org/image</ImagenDoc>	
+		<HtmlNuevo>true</HtmlNuevo>
+		<CategorizacionTesauroGnossObligatoria>false</CategorizacionTesauroGnossObligatoria>
+	</ConfiguracionGeneral>
+	<EspefPropiedad>
+		<Propiedad  ID="http://schema.org/iDirector" EntidadID="http://schema.org/Person">
+			<AtrNombre>http://schema.org/iDirector</AtrNombre>
+			<AtrNombreLectura>http://schema.org/iDirector</AtrNombreLectura>
+			<SeleccionEntidad>
+				<NuevaPestanya>false</NuevaPestanya>
+				<TipoSeleccion>Autocompletar</TipoSeleccion>
+				<Grafo>schema.owl</Grafo>
+				<UrlTipoEntSolicitada>http://schema.org/Movie</UrlTipoEntSolicitada>
+				<PropsEntLectura>
+					<Propiedad  ID="http://schema.org/name" EntidadID="http://schema.org/Movie">
+						<AtrNombre >Name</AtrNombre>
+						<AtrNombreLectura >Name</AtrNombreLectura>
+					</Propiedad>
+					<Propiedad  ID="http://schema.org/image" EntidadID="http://schema.org/Movie">
+						<AtrNombre >Image</AtrNombre>
+						<AtrNombreLectura >Image</AtrNombreLectura>
+						<TipoCampo>Imagen</TipoCampo>		
+						<ImgMiniVP>
+							<Size Tipo="RecorteCuadrado">
+								<Alto>234</Alto>
+							</Size>				
+							<Size>
+								<Ancho>318</Ancho>
+								<Alto>234</Alto>
+							</Size>
+							<Size>
+								<Ancho>992</Ancho>
+								<Alto>234</Alto>
+							</Size>
+						</ImgMiniVP>
+					</Propiedad>
+				</PropsEntLectura>
+<Reciproca/>
+				<ConsultaReciproca>
+
+					<![CDATA[SELECT distinct ?movie WHERE {?movie <http://schema.org/director> ?director. ?movie <http://schema.org/ratingValue> ?ratin filter(?director = @EntidadID@)} order by ?ratin limit 5 ]]>
+
+				</ConsultaReciproca>
+			</SeleccionEntidad>
+		</Propiedad>
+		<Propiedad  ID="http://schema.org/iActors" EntidadID="http://schema.org/Person">
+			<AtrNombre>http://schema.org/iActors</AtrNombre>
+			<AtrNombreLectura>http://schema.org/iActors</AtrNombreLectura>
+			<SeleccionEntidad>
+				<NuevaPestanya>false</NuevaPestanya>
+				<TipoSeleccion>Autocompletar</TipoSeleccion>
+				<Grafo>schema.owl</Grafo>
+				<UrlTipoEntSolicitada>http://schema.org/Movie</UrlTipoEntSolicitada>
+
+				<PropsEntLectura>
+					<Propiedad  ID="http://schema.org/name" EntidadID="http://schema.org/Movie">
+						<AtrNombre >Name</AtrNombre>
+						<AtrNombreLectura >Name</AtrNombreLectura>
+					</Propiedad>
+					<Propiedad  ID="http://schema.org/image" EntidadID="http://schema.org/Movie">
+						<AtrNombre >Image</AtrNombre>
+						<AtrNombreLectura >Image</AtrNombreLectura>
+						<TipoCampo>Imagen</TipoCampo>		
+						<ImgMiniVP>
+							<Size Tipo="RecorteCuadrado">
+								<Alto>234</Alto>
+							</Size>				
+							<Size>
+								<Ancho>318</Ancho>
+								<Alto>234</Alto>
+							</Size>
+							<Size>
+								<Ancho>992</Ancho>
+								<Alto>234</Alto>
+							</Size>
+						</ImgMiniVP>
+					</Propiedad>
+				</PropsEntLectura>
+				<Reciproca/>
+				<ConsultaReciproca>
+
+					<![CDATA[SELECT distinct ?movie WHERE {?movie <http://schema.org/actor> ?actor. ?movie <http://schema.org/ratingValue> ?ratin filter(?actor = @EntidadID@ )} order by ?ratin limit 5 ]]>
+
+				</ConsultaReciproca>
+
+			</SeleccionEntidad>
+		</Propiedad>
+		<Propiedad  ID="http://schema.org/actoresComunActor" EntidadID="http://schema.org/Person">
+			<AtrNombre>http://schema.org/actoresComunActor</AtrNombre>
+			<AtrNombreLectura>http://schema.org/actoresComunActor</AtrNombreLectura>
+			<SeleccionEntidad>
+				<NuevaPestanya>false</NuevaPestanya>
+				<TipoSeleccion>Autocompletar</TipoSeleccion>
+				<Grafo>person.owl</Grafo>
+				<UrlTipoEntSolicitada>http://schema.org/Person</UrlTipoEntSolicitada>
+				<PropsEntLectura>
+					<Propiedad  ID="http://schema.org/name" EntidadID="http://schema.org/Person">
+						<AtrNombre >Name</AtrNombre>
+						<AtrNombreLectura >Name</AtrNombreLectura>
+					</Propiedad>
+				</PropsEntLectura>
+				<Reciproca/>
+				<ConsultaReciproca>
+					<![CDATA[SELECT distinct ?actor WHERE {?movie <http://schema.org/actor> ?sujeto . ?movie <http://schema.org/actor> ?actor  filter (?sujeto =@EntidadID@ && ?sujeto!=?actor)} limit 5 ]]>
+				</ConsultaReciproca>
+			</SeleccionEntidad>
+		</Propiedad>
+		<Propiedad  ID="http://schema.org/actoresComunDirector" EntidadID="http://schema.org/Person">
+			<AtrNombre>http://schema.org/actoresComunDirector</AtrNombre>
+			<AtrNombreLectura>http://schema.org/actoresComunDirector</AtrNombreLectura>
+			<SeleccionEntidad>
+				<NuevaPestanya>false</NuevaPestanya>
+				<TipoSeleccion>Autocompletar</TipoSeleccion>
+				<Grafo>person.owl</Grafo>
+				<UrlTipoEntSolicitada>http://schema.org/Person</UrlTipoEntSolicitada>
+				<PropsEntLectura>
+					<Propiedad  ID="http://schema.org/name" EntidadID="http://schema.org/Person">
+						<AtrNombre >Name</AtrNombre>
+						<AtrNombreLectura >Name</AtrNombreLectura>
+					</Propiedad>
+					
+				</PropsEntLectura>
+				<Reciproca/>
+				<ConsultaReciproca>
+					<![CDATA[SELECT distinct ?actor WHERE {?movie <http://schema.org/director> ?sujeto . ?movie <http://schema.org/actor> ?actor  filter (?sujeto =@EntidadID@ && ?sujeto!=?actor)} limit 5 ]]>
+				</ConsultaReciproca>
+			</SeleccionEntidad>
+		</Propiedad>
+		<Propiedad  ID="http://schema.org/directoresComunActor" EntidadID="http://schema.org/Person">
+			<AtrNombre>http://schema.org/directoresComunActor</AtrNombre>
+			<AtrNombreLectura>http://schema.org/directoresComunActor</AtrNombreLectura>
+			<SeleccionEntidad>
+				<NuevaPestanya>false</NuevaPestanya>
+				<TipoSeleccion>Autocompletar</TipoSeleccion>
+				<Grafo>person.owl</Grafo>
+				<UrlTipoEntSolicitada>http://schema.org/Person</UrlTipoEntSolicitada>
+				<PropsEntLectura>
+					<Propiedad  ID="http://schema.org/name" EntidadID="http://schema.org/Person">
+						<AtrNombre >Name</AtrNombre>
+						<AtrNombreLectura >Name</AtrNombreLectura>
+					</Propiedad>
+					
+				</PropsEntLectura>
+				<Reciproca/>
+				<ConsultaReciproca>
+					<![CDATA[SELECT distinct ?director WHERE {?movie <http://schema.org/actor> ?actor. ?movie <http://schema.org/director> ?director  filter (?actor=@EntidadID@ && ?actor!=?director)} limit 5 ]]>
+				</ConsultaReciproca>
+			</SeleccionEntidad>
+		</Propiedad>
+		<Propiedad  ID="http://schema.org/directoresComunDirector" EntidadID="http://schema.org/Person">
+			<AtrNombre>http://schema.org/directoresComunDirector</AtrNombre>
+			<AtrNombreLectura>http://schema.org/directoresComunDirector</AtrNombreLectura>
+			<SeleccionEntidad>
+				<NuevaPestanya>false</NuevaPestanya>
+				<TipoSeleccion>Autocompletar</TipoSeleccion>
+				<Grafo>person.owl</Grafo>
+				<UrlTipoEntSolicitada>http://schema.org/Person</UrlTipoEntSolicitada>
+				<PropsEntLectura>
+					<Propiedad  ID="http://schema.org/name" EntidadID="http://schema.org/Person">
+						<AtrNombre >Name</AtrNombre>
+						<AtrNombreLectura >Name</AtrNombreLectura>
+					</Propiedad>
+					
+				</PropsEntLectura>
+				<Reciproca/>
+				<ConsultaReciproca>
+					<![CDATA[SELECT distinct ?director WHERE {?movie <http://schema.org/director> ?actor. ?movie <http://schema.org/director> ?director  filter (?actor=@EntidadID@ && ?actor!= ?director)} limit 5 ]]>
+				</ConsultaReciproca>
+			</SeleccionEntidad>
+		</Propiedad>
+		<Propiedad  ID="http://schema.org/image" EntidadID="http://schema.org/Person">
+			<AtrNombre>Imagen</AtrNombre>
+			<AtrNombreLectura>Imagen:</AtrNombreLectura>
+			<TipoCampo>Imagen</TipoCampo>
+			<ImgMiniVP>
+				<Size Tipo="RecorteCuadrado">
+					<Alto>234</Alto>
+				</Size>				
+				<Size>
+					<Ancho>318</Ancho>
+					<Alto>234</Alto>
+				</Size>
+				<Size>
+					<Ancho>992</Ancho>
+					<Alto>234</Alto>
+				</Size>
+			</ImgMiniVP>			
+		</Propiedad>
+		<Propiedad  ID="http://schema.org/name" EntidadID="http://schema.org/Person">
+			<AtrNombre>Nombre</AtrNombre>
+			<AtrNombreLectura>Nombre:</AtrNombreLectura>
+		</Propiedad>
+		
+	</EspefPropiedad>
+	<EspefEntidad>
+		<Entidad  ID="http://schema.org/Person">
+			<AtrNombre>http://schema.org/Person</AtrNombre>
+			<AtrNombreLectura/>
+			<OrdenEntidad>
+				<Grupo class="formtheme02">
+					<Grupo class="fieldset">
+						<Grupo Tipo="fieldset" class="mediumLabels">
+                            <NameProp>http://schema.org/image</NameProp> 
+                            <NameProp>http://schema.org/name</NameProp>
+						</Grupo>
+					</Grupo>
+				</Grupo>
+			</OrdenEntidad>
+			<OrdenEntidadLectura>
+				<Grupo classLectura="contentGroup contenidoPrincipal">
+					<Grupo classLectura="group title">
+						<Grupo Tipo="titulo">                            
+							<NameProp>http://schema.org/name</NameProp>
+						</Grupo>
+						<Grupo>   
+							<NameProp>http://schema.org/image</NameProp> 
+						</Grupo>
+						<Grupo Tipo="subtitulo">                           
+						</Grupo>
+					</Grupo>
+				</Grupo>
+				<Grupo classLectura="group content semanticView">
+					<Grupo classLectura="group group_info">
+						<AtrNombreGrupo>Películas</AtrNombreGrupo>
+						<Grupo classLectura="contentGroup">
+                            <NameProp>http://schema.org/iDirector</NameProp> 
+                            <NameProp>http://schema.org/iActors</NameProp> 
+							<NameProp>http://schema.org/actoresComunActor</NameProp> 
+							<NameProp>http://schema.org/directoresComunActor</NameProp>
+							<NameProp>http://schema.org/actoresComunDirector</NameProp> 
+							<NameProp>http://schema.org/directoresComunDirector</NameProp>
+						</Grupo>
+					</Grupo>
+				</Grupo>
+			</OrdenEntidadLectura>
+		</Entidad>
+	</EspefEntidad>
+</config>

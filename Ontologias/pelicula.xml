@@ -1,0 +1,276 @@
+<config>
+    <ConfiguracionGeneral>
+        <namespace>pelicula</namespace>
+        <idiomasOnto>
+            <idiomaOnto>es</idiomaOnto>
+        </idiomasOnto>
+        <ocultarTituloDescpImgDoc></ocultarTituloDescpImgDoc>
+        <TituloDoc EntidadID="http://schema.org/Movie">http://schema.org/name</TituloDoc>
+        <DescripcionDoc EntidadID="http://schema.org/Movie">http://schema.org/description</DescripcionDoc>
+		<ImagenDoc EntidadID="http://schema.org/Movie">http://schema.org/image</ImagenDoc>	
+        <HtmlNuevo>true</HtmlNuevo>
+		<CategorizacionTesauroGnossObligatoria>false</CategorizacionTesauroGnossObligatoria>
+    </ConfiguracionGeneral>
+    <EspefPropiedad>
+		<Propiedad  ID="http://schema.org/rating" EntidadID="http://schema.org/Movie">
+			<AtrNombre>Puntuaciones:</AtrNombre>
+			<AtrNombreLectura>Puntuaciones:</AtrNombreLectura>
+			<SeleccionEntidad>
+				<TipoSeleccion>Autocompletar</TipoSeleccion>
+				<Grafo>pelicula.owl</Grafo>
+				<UrlTipoEntSolicitada>http://schema.org/Rating</UrlTipoEntSolicitada>
+				<PropsEntEdicion>
+					<NameProp>http://schema.org/ratingValue</NameProp>
+				</PropsEntEdicion>
+				<PropsEntLectura>
+					<Propiedad ID="http://schema.org/ratingSource" EntidadID="http://schema.org/Rating">
+						<AtrNombre>Fuente</AtrNombre>
+						<AtrNombreLectura>Fuente</AtrNombreLectura>
+					</Propiedad>
+					<Propiedad ID="http://schema.org/ratingValue" EntidadID="http://schema.org/Rating">
+						<AtrNombre>Puntuación</AtrNombre>
+						<AtrNombreLectura>Puntuación</AtrNombreLectura>
+					</Propiedad>
+				</PropsEntLectura>
+			</SeleccionEntidad>
+		</Propiedad>
+		<Propiedad  ID="http://schema.org/author" EntidadID="http://schema.org/Movie">
+			<AtrNombre>Guionistas</AtrNombre>
+			<AtrNombreLectura>Guionistas</AtrNombreLectura>
+			<SeleccionEntidad>
+				<TipoSeleccion>Autocompletar</TipoSeleccion>
+				<Grafo>persona.owl</Grafo>
+				<UrlTipoEntSolicitada>http://schema.org/Person</UrlTipoEntSolicitada>
+				<PropsEntEdicion>
+					<NameProp>http://schema.org/name</NameProp>
+				</PropsEntEdicion>
+				<PropsEntLectura>
+					<Propiedad ID="http://schema.org/name" EntidadID="http://schema.org/Person">
+						<AtrNombre>Guionista</AtrNombre>
+						<AtrNombreLectura>Guionista</AtrNombreLectura>
+					</Propiedad>
+				</PropsEntLectura>
+			</SeleccionEntidad>
+		</Propiedad>
+		<Propiedad  ID="http://schema.org/image" EntidadID="http://schema.org/Movie">
+			<AtrNombre>Imagen</AtrNombre>
+			<AtrNombreLectura>Imagen:</AtrNombreLectura>
+			<TipoCampo>Imagen</TipoCampo>		
+			<ImgMiniVP>
+				<Size Tipo="RecorteCuadrado">
+					<Alto>234</Alto>
+				</Size>				
+				<Size>
+					<Ancho>318</Ancho>
+					<Alto>234</Alto>
+				</Size>
+				<Size>
+					<Ancho>992</Ancho>
+					<Alto>234</Alto>
+				</Size>
+			</ImgMiniVP>
+			</Propiedad>
+			<Propiedad  ID="http://schema.org/director" EntidadID="http://schema.org/Movie">
+			<AtrNombre>Directores</AtrNombre>
+			<AtrNombreLectura>Directores:</AtrNombreLectura>
+			<SeleccionEntidad>
+				<TipoSeleccion>Autocompletar</TipoSeleccion>
+				<Grafo>persona.owl</Grafo>
+				<UrlTipoEntSolicitada>http://schema.org/Person</UrlTipoEntSolicitada>
+				<PropsEntEdicion>
+					<NameProp>http://schema.org/name</NameProp>
+				</PropsEntEdicion>
+				<PropsEntLectura>
+					<Propiedad ID="http://schema.org/name" EntidadID="http://schema.org/Person">
+						<AtrNombre>Director</AtrNombre>
+						<AtrNombreLectura>Director:</AtrNombreLectura>
+					</Propiedad>
+				</PropsEntLectura>
+			</SeleccionEntidad>
+		</Propiedad>
+		<Propiedad  ID="http://schema.org/actor" EntidadID="http://schema.org/Movie">
+			<AtrNombre>Actores</AtrNombre>
+			<AtrNombreLectura>Actores:</AtrNombreLectura>
+			<SeleccionEntidad>
+				<TipoSeleccion>Autocompletar</TipoSeleccion>
+				<Grafo>persona.owl</Grafo>
+				<UrlTipoEntSolicitada>http://schema.org/Person</UrlTipoEntSolicitada>
+				<PropsEntEdicion>
+					<NameProp>http://schema.org/name</NameProp>
+				</PropsEntEdicion>
+				<PropsEntLectura>
+					<Propiedad ID="http://schema.org/name" EntidadID="http://schema.org/Person">
+						<AtrNombre>Actor</AtrNombre>
+						<AtrNombreLectura>Actor:</AtrNombreLectura>
+					</Propiedad>
+				</PropsEntLectura>
+			</SeleccionEntidad>
+		</Propiedad>
+        <Propiedad  ID="http://schema.org/ratingSource" EntidadID="http://schema.org/Rating">
+            <AtrNombre>Fuente</AtrNombre>
+            <AtrNombreLectura>Fuente:</AtrNombreLectura>
+        </Propiedad>
+        <Propiedad  ID="http://schema.org/ratingValue" EntidadID="http://schema.org/Rating">
+            <AtrNombre>Puntuación</AtrNombre>
+            <AtrNombreLectura>Puntuación:</AtrNombreLectura>
+        </Propiedad>
+        <Propiedad  ID="http://schema.org/genre" EntidadID="http://schema.org/Movie">
+            <AtrNombre>Género</AtrNombre>
+            <AtrNombreLectura>Género:</AtrNombreLectura>
+        </Propiedad>
+        <Propiedad  ID="http://schema.org/url" EntidadID="http://schema.org/Movie">
+            <AtrNombre>Enlace externo</AtrNombre>
+            <AtrNombreLectura>Enlace externo:</AtrNombreLectura>
+        </Propiedad>
+        <Propiedad  ID="http://schema.org/aggregateRating" EntidadID="http://schema.org/Movie">
+            <AtrNombre>Puntuación IMDb</AtrNombre>
+            <AtrNombreLectura>Puntuación IMDb:</AtrNombreLectura>
+        </Propiedad>
+        <Propiedad  ID="http://schema.org/productionCompany" EntidadID="http://schema.org/Movie">
+            <AtrNombre>Productoras</AtrNombre>
+            <AtrNombreLectura>Productoras:</AtrNombreLectura>
+        </Propiedad>
+        <Propiedad  ID="http://schema.org/recordedAt" EntidadID="http://schema.org/Movie">
+            <AtrNombre>Año grabación</AtrNombre>
+            <AtrNombreLectura>Año grabación:</AtrNombreLectura>
+        </Propiedad>
+        <Propiedad  ID="http://schema.org/countryOfOrigin" EntidadID="http://schema.org/Movie">
+            <AtrNombre>País</AtrNombre>
+            <AtrNombreLectura>País:</AtrNombreLectura>
+        </Propiedad>
+        <Propiedad  ID="http://schema.org/duration" EntidadID="http://schema.org/Movie">
+            <AtrNombre>Duración</AtrNombre>
+            <AtrNombreLectura>Duración:</AtrNombreLectura>
+        </Propiedad>
+        <Propiedad  ID="http://schema.org/inLanguage" EntidadID="http://schema.org/Movie">
+            <AtrNombre>Idioma</AtrNombre>
+            <AtrNombreLectura>Idioma:</AtrNombreLectura>
+        </Propiedad>
+        <Propiedad  ID="http://schema.org/award" EntidadID="http://schema.org/Movie">
+            <AtrNombre>Premios</AtrNombre>
+            <AtrNombreLectura>Premios:</AtrNombreLectura>
+        </Propiedad>
+        <Propiedad  ID="http://schema.org/description" EntidadID="http://schema.org/Movie">
+            <AtrNombre>Sinopsis</AtrNombre>
+            <AtrNombreLectura>Sinopsis:</AtrNombreLectura>
+        </Propiedad>
+        <Propiedad  ID="http://schema.org/name" EntidadID="http://schema.org/Movie">
+            <AtrNombre>Título</AtrNombre>
+            <AtrNombreLectura>Título:</AtrNombreLectura>
+        </Propiedad>
+        <Propiedad  ID="http://schema.org/datePublished" EntidadID="http://schema.org/Movie">
+            <AtrNombre>Año lanzamiento</AtrNombre>
+            <AtrNombreLectura>Año lanzamiento:</AtrNombreLectura>
+        </Propiedad>
+        <Propiedad  ID="http://schema.org/contentRating" EntidadID="http://schema.org/Movie">
+            <AtrNombre>Clasificación del contenido</AtrNombre>
+            <AtrNombreLectura>Clasificación del contenido:</AtrNombreLectura>
+        </Propiedad>
+    </EspefPropiedad>
+    <EspefEntidad>
+        <Entidad  ID="http://schema.org/Rating">
+			<AtrNombre>http://schema.org/Rating</AtrNombre>
+			<AtrNombreLectura>http://schema.org/Rating</AtrNombreLectura>
+			<OrdenEntidad>
+				<Grupo class="formtheme02">
+					<Grupo class="fieldset">
+						<Grupo Tipo="fieldset" class="mediumLabels">
+							<NameProp>http://schema.org/ratingValue</NameProp> 
+							<NameProp>http://schema.org/ratingSource</NameProp>
+						</Grupo>
+					</Grupo>
+				</Grupo>
+			</OrdenEntidad>
+			<OrdenEntidadLectura>
+				<Grupo classLectura="contentGroup contenidoPrincipal">
+					<Grupo classLectura="group title">
+						<Grupo Tipo="titulo">
+							<NameProp>http://schema.org/ratingSource</NameProp>
+						</Grupo>
+						<Grupo Tipo="subtitulo">
+							<NameProp>http://schema.org/ratingValue</NameProp>
+						</Grupo>
+					</Grupo>
+				</Grupo>
+				<Grupo classLectura="group content semanticView">
+					<Grupo classLectura="group group_info">
+						<AtrNombreGrupo>Propiedades</AtrNombreGrupo>
+						<Grupo classLectura="contentGroup">
+							<NameProp>http://schema.org/ratingValue</NameProp> 
+							<NameProp>http://schema.org/ratingSource</NameProp>
+						</Grupo>
+					</Grupo>
+				</Grupo>
+			</OrdenEntidadLectura>
+		</Entidad>
+		<Entidad  ID="http://schema.org/Movie">
+			<AtrNombre>Película</AtrNombre>
+			<AtrNombreLectura>Película</AtrNombreLectura>
+			<OrdenEntidad>
+				<Grupo class="formtheme02">
+					<Grupo class="fieldset">
+						<Grupo Tipo="fieldset" class="mediumLabels">
+							<NameProp>http://schema.org/director</NameProp> 
+							<NameProp>http://schema.org/actor</NameProp> 
+							<NameProp>http://schema.org/countryOfOrigin</NameProp> 
+							<NameProp>http://schema.org/duration</NameProp> 
+							<NameProp>http://schema.org/productionCompany</NameProp> 
+							<NameProp>http://schema.org/ratingValue</NameProp> 
+							<NameProp>http://schema.org/rating</NameProp> 
+							<NameProp>http://schema.org/author</NameProp> 
+							<NameProp>http://schema.org/genre</NameProp> 
+							<NameProp>http://schema.org/inLanguage</NameProp> 
+							<NameProp>http://schema.org/url</NameProp> 
+							<NameProp>http://schema.org/recordedAt</NameProp> 
+							<NameProp>http://schema.org/award</NameProp> 
+							<NameProp>http://schema.org/description</NameProp> 
+							<NameProp>http://schema.org/name</NameProp> 
+							<NameProp>http://schema.org/datePublished</NameProp> 
+							<NameProp>http://schema.org/image</NameProp> 
+							<NameProp>http://schema.org/contentRating</NameProp>
+							<NameProp>http://schema.org/genre</NameProp>
+							<NameProp>http://schema.org/aggregateRating</NameProp>
+						</Grupo>
+					</Grupo>
+				</Grupo>
+			</OrdenEntidad>
+			<OrdenEntidadLectura>
+				<Grupo classLectura="contentGroup contenidoPrincipal">
+					<Grupo classLectura="group title">
+						<Grupo Tipo="titulo">
+							<NameProp>http://schema.org/name</NameProp>
+						</Grupo>
+						<Grupo Tipo="subtitulo">
+							<NameProp>http://schema.org/description</NameProp>
+						</Grupo>
+					</Grupo>
+				</Grupo>
+				<Grupo classLectura="group content semanticView">
+					<Grupo classLectura="group group_info">
+						<AtrNombreGrupo>Propiedades</AtrNombreGrupo>
+						<Grupo classLectura="contentGroup">
+							<NameProp>http://schema.org/director</NameProp> 
+							<NameProp>http://schema.org/actor</NameProp> 
+							<NameProp>http://schema.org/countryOfOrigin</NameProp> 
+							<NameProp>http://schema.org/duration</NameProp> 
+							<NameProp>http://schema.org/productionCompany</NameProp> 
+							<NameProp>http://schema.org/ratingValue</NameProp> 
+							<NameProp>http://schema.org/rating</NameProp> 
+							<NameProp>http://schema.org/author</NameProp> 
+							<NameProp>http://schema.org/genre</NameProp> 
+							<NameProp>http://schema.org/inLanguage</NameProp> 
+							<NameProp>http://schema.org/url</NameProp> 
+							<NameProp>http://schema.org/recordedAt</NameProp> 
+							<NameProp>http://schema.org/award</NameProp>
+							<NameProp>http://schema.org/datePublished</NameProp> 
+							<NameProp>http://schema.org/image</NameProp> 
+							<NameProp>http://schema.org/contentRating</NameProp>
+							<NameProp>http://schema.org/aggregateRating</NameProp>
+							<NameProp>http://schema.org/genre</NameProp>
+						</Grupo>
+					</Grupo>
+				</Grupo>
+			</OrdenEntidadLectura>
+		</Entidad>
+    </EspefEntidad>
+</config>
