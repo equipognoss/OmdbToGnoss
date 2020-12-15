@@ -113,7 +113,7 @@ namespace OMDbToGnoss
                     {
 
                         CSVEntry gaux = new CSVEntry();
-                        gaux.guid = "PeliculaOntology_" + Guid.NewGuid() + "_" + Guid.NewGuid();
+                        gaux.guid = "Movie_" + Guid.NewGuid() + "_" + Guid.NewGuid();
                         gaux.identificador = movie.Schema_name;
                         listPeliculasGuids.Add(gaux);
                         peliculasGuidDictionary[movie.Schema_name] = gaux.guid;
