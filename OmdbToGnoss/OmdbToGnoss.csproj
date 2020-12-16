@@ -99,6 +99,7 @@
     </None>
     <None Include="Config\OAuth.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />
   </ItemGroup>

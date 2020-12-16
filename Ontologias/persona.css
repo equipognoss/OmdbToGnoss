@@ -1,0 +1,12 @@
+#titulo > h1 {
+  text-align: center;
+}
+
+.imgcontainer {
+	margin-top: 25px;
+}
+
+.imgpeli{
+	height: 250px;
+	width: 150px;
+}

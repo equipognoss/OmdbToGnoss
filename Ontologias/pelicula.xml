@@ -15,24 +15,7 @@
 		<Propiedad  ID="http://schema.org/rating" EntidadID="http://schema.org/Movie">
 			<AtrNombre>Puntuaciones:</AtrNombre>
 			<AtrNombreLectura>Puntuaciones:</AtrNombreLectura>
-			<SeleccionEntidad>
-				<TipoSeleccion>Autocompletar</TipoSeleccion>
-				<Grafo>pelicula.owl</Grafo>
-				<UrlTipoEntSolicitada>http://schema.org/Rating</UrlTipoEntSolicitada>
-				<PropsEntEdicion>
-					<NameProp>http://schema.org/ratingValue</NameProp>
-				</PropsEntEdicion>
-				<PropsEntLectura>
-					<Propiedad ID="http://schema.org/ratingSource" EntidadID="http://schema.org/Rating">
-						<AtrNombre>Fuente</AtrNombre>
-						<AtrNombreLectura>Fuente</AtrNombreLectura>
-					</Propiedad>
-					<Propiedad ID="http://schema.org/ratingValue" EntidadID="http://schema.org/Rating">
-						<AtrNombre>Puntuación</AtrNombre>
-						<AtrNombreLectura>Puntuación</AtrNombreLectura>
-					</Propiedad>
-				</PropsEntLectura>
-			</SeleccionEntidad>
+		
 		</Propiedad>
 		<Propiedad  ID="http://schema.org/author" EntidadID="http://schema.org/Movie">
 			<AtrNombre>Guionistas</AtrNombre>
@@ -41,6 +24,7 @@
 				<TipoSeleccion>Autocompletar</TipoSeleccion>
 				<Grafo>persona.owl</Grafo>
 				<UrlTipoEntSolicitada>http://schema.org/Person</UrlTipoEntSolicitada>
+				<LinkARecurso PropiedadID="http://schema.org/name"></LinkARecurso>
 				<PropsEntEdicion>
 					<NameProp>http://schema.org/name</NameProp>
 				</PropsEntEdicion>
@@ -77,6 +61,7 @@
 				<TipoSeleccion>Autocompletar</TipoSeleccion>
 				<Grafo>persona.owl</Grafo>
 				<UrlTipoEntSolicitada>http://schema.org/Person</UrlTipoEntSolicitada>
+				<LinkARecurso PropiedadID="http://schema.org/name"></LinkARecurso>
 				<PropsEntEdicion>
 					<NameProp>http://schema.org/name</NameProp>
 				</PropsEntEdicion>
@@ -95,6 +80,7 @@
 				<TipoSeleccion>Autocompletar</TipoSeleccion>
 				<Grafo>persona.owl</Grafo>
 				<UrlTipoEntSolicitada>http://schema.org/Person</UrlTipoEntSolicitada>
+				<LinkARecurso PropiedadID="http://schema.org/name"></LinkARecurso>
 				<PropsEntEdicion>
 					<NameProp>http://schema.org/name</NameProp>
 				</PropsEntEdicion>
@@ -194,7 +180,7 @@
 				</Grupo>
 				<Grupo classLectura="group content semanticView">
 					<Grupo classLectura="group group_info">
-						<AtrNombreGrupo>Propiedades</AtrNombreGrupo>
+						<AtrNombreGrupo>Puntuacion</AtrNombreGrupo>
 						<Grupo classLectura="contentGroup">
 							<NameProp>http://schema.org/ratingValue</NameProp> 
 							<NameProp>http://schema.org/ratingSource</NameProp>
@@ -215,7 +201,6 @@
 							<NameProp>http://schema.org/countryOfOrigin</NameProp> 
 							<NameProp>http://schema.org/duration</NameProp> 
 							<NameProp>http://schema.org/productionCompany</NameProp> 
-							<NameProp>http://schema.org/ratingValue</NameProp> 
 							<NameProp>http://schema.org/rating</NameProp> 
 							<NameProp>http://schema.org/author</NameProp> 
 							<NameProp>http://schema.org/genre</NameProp> 
@@ -254,7 +239,6 @@
 							<NameProp>http://schema.org/countryOfOrigin</NameProp> 
 							<NameProp>http://schema.org/duration</NameProp> 
 							<NameProp>http://schema.org/productionCompany</NameProp> 
-							<NameProp>http://schema.org/ratingValue</NameProp> 
 							<NameProp>http://schema.org/rating</NameProp> 
 							<NameProp>http://schema.org/author</NameProp> 
 							<NameProp>http://schema.org/genre</NameProp> 
