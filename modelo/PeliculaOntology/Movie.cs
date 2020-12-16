@@ -389,8 +389,11 @@ namespace PeliculaOntology
 			propList.Add(new ListStringOntologyProperty("schema:recordedAt", Schema_recordedAtString));
 			propList.Add(new ListStringOntologyProperty("schema:countryOfOrigin", this.Schema_countryOfOrigin));
 			List<string> Schema_durationString = new List<string>();
-			Schema_durationString.AddRange(Array.ConvertAll(this.Schema_duration.ToArray() , element => element.ToString()));
-			propList.Add(new ListStringOntologyProperty("schema:duration", Schema_durationString));
+			if (Schema_duration != null)
+			{
+				Schema_durationString.AddRange(Array.ConvertAll(this.Schema_duration.ToArray(), element => element.ToString()));
+				propList.Add(new ListStringOntologyProperty("schema:duration", Schema_durationString));
+			}
 			propList.Add(new ListStringOntologyProperty("schema:inLanguage", this.Schema_inLanguage));
 			propList.Add(new ListStringOntologyProperty("schema:award", this.Schema_award));
 			propList.Add(new StringOntologyProperty("schema:description", this.Schema_description));
