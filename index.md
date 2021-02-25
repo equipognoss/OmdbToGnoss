@@ -6,7 +6,8 @@ Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://j
 
 Esto es un enlace relativo: [test](test.md)
 Esto es un enlace relativo con espacios: [test con espacios](test con espacios.md)
-Esto es un enlace relativo con espacios y acéntos: [test con espacios](test%20con%20esp%C3%A1cios%20y%20acentos.md)
+Esto es un enlace relativo con espacios y acéntos: [test con espacios y acentos](test con espácios y acentos.md)
+MAL Esto es un enlace relativo con espacios y acéntos: [test con espacios y acentos](test con esp%C3%A1cios y acentos.md)
 
 ### Markdown
 
