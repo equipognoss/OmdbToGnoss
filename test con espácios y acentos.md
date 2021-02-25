@@ -1,12 +1,8 @@
-## Welcome to GitHub Pages
+## Welcome to GitHub Pages TEST!!!
 
 You can use the [editor on GitHub](https://github.com/equipognoss/OmdbToGnoss/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
 
 Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
-
-Esto es un enlace relativo: [test](test.md)
-Esto es un enlace relativo con espacios: [test con espacios](test%20con%20espacios.md)
-Esto es un enlace relativo con espacios y acéntos: [test con espacios](test%20con%20esp%C3%A1cios%20y%20acentos.md)
 
 ### Markdown
 
