@@ -5,7 +5,7 @@ You can use the [editor on GitHub](https://github.com/equipognoss/OmdbToGnoss/ed
 Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
 
 Esto es un enlace relativo: [test](test.md)
-Esto es un enlace relativo con espacios: [test con espacios](test%20con%20espacios.md)
+Esto es un enlace relativo con espacios: [test con espacios](test con espacios.md)
 Esto es un enlace relativo con espacios y acéntos: [test con espacios](test%20con%20esp%C3%A1cios%20y%20acentos.md)
 
 ### Markdown
