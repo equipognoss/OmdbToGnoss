@@ -44,7 +44,7 @@ namespace OMDbToGnoss
             
             foreach (Person persona in personas)
             {
-                if (!guidsExistentes.Contains("http://try.gnoss.com/items/" + guidDictionary[persona.Schema_name]))
+                if (!guidsExistentes.Contains("http://testing.gnoss.com/items/" + guidDictionary[persona.Schema_name]))
                 {
                     try
                     {
@@ -82,7 +82,7 @@ namespace OMDbToGnoss
 
             foreach (Movie pelicula in peliculas)
             {
-                if (!guidsExistentes.Contains("http://try.gnoss.com/items/" + guidDictionary[pelicula.Schema_name])) { 
+                if (!guidsExistentes.Contains("http://testing.gnoss.com/items/" + guidDictionary[pelicula.Schema_name])) { 
                     try
                     {
                         ComplexOntologyResource complexResource = pelicula.ToGnossApiResource(mResourceApi, null, new Guid(guidDictionary[pelicula.Schema_name].Split('_')[1]), new Guid(guidDictionary[pelicula.Schema_name].Split('_')[2]));

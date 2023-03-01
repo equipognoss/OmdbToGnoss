@@ -94,8 +94,14 @@ namespace OMDbToGnoss
             HashSet<String> nombrePeliculas = new HashSet<String>();
             HashSet<String> nombrePersonas = new HashSet<String>();
 
+            string directory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Data");
+            if (!Directory.Exists(directory))
+            {
+                directory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..\\..\\Data");
+            }
+
             //Conseguimos los nombres de los ficheros json y los leemos uno a uno. 
-            string[] ficheros = Directory.GetFiles(Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..\\..\\Data")));
+            string[] ficheros = Directory.GetFiles(Path.GetFullPath(directory));
 
             foreach (string fichero in ficheros)
             {
@@ -331,7 +337,7 @@ namespace OMDbToGnoss
                     }
 
                     movie.Schema_director.Add(person);
-                    movie.IdsSchema_director.Add("http://try.gnoss.com/items/" + personasGuidDictionary[person.Schema_name]);
+                    movie.IdsSchema_director.Add("http://testing.gnoss.com/items/" + personasGuidDictionary[person.Schema_name]);
                     if (!nombrePersonas.Contains(person.Schema_name))
                     {
                         persons.Add(person);
@@ -361,7 +367,7 @@ namespace OMDbToGnoss
                     }
 
                     movie.Schema_author.Add(person);
-                    movie.IdsSchema_author.Add("http://try.gnoss.com/items/" + personasGuidDictionary[person.Schema_name]);
+                    movie.IdsSchema_author.Add("http://testing.gnoss.com/items/" + personasGuidDictionary[person.Schema_name]);
                     if (!nombrePersonas.Contains(person.Schema_name))
                     {
                         persons.Add(person);
@@ -391,7 +397,7 @@ namespace OMDbToGnoss
                     }
 
                     movie.Schema_actor.Add(person);
-                    movie.IdsSchema_actor.Add("http://try.gnoss.com/items/" + personasGuidDictionary[person.Schema_name]);
+                    movie.IdsSchema_actor.Add("http://testing.gnoss.com/items/" + personasGuidDictionary[person.Schema_name]);
                     if (!nombrePersonas.Contains(person.Schema_name))
                     {
                         persons.Add(person);

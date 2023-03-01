@@ -10,7 +10,7 @@ namespace OMDbToGnoss
     {
         static void Main(string[] args)
         {
-            int maxPeliculas = 100; //Numero de peliculas a cargar
+            int maxPeliculas = 300; //Numero de peliculas a cargar
             LectorPeliculas lector = new LectorPeliculas(maxPeliculas);
             GnossApiService gnossApiService = new GnossApiService();
             gnossApiService.CargarPeliculas(lector.Movies, lector.PeliculasGuid);
